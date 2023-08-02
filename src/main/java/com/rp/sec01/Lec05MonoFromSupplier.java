@@ -12,7 +12,11 @@ public class Lec05MonoFromSupplier {
 
         // use just only when you have data already
        // Mono<String> mono = Mono.just(getName());
+        //Only need to do the work when requested then use Supplier
+        //Even if we dont use any subscriber, the method inside Mono.just is called, but if u use Supplier, it is not
+        //So things should be Lazy
 
+        
         Supplier<String> stringSupplier = () -> getName();
         Mono<String> mono = Mono.fromSupplier(stringSupplier);
         mono.subscribe(
